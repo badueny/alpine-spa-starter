@@ -1,0 +1,9 @@
+<div class="bg-white p-6 rounded-lg shadow-sm">
+  <h1 class="text-2xl font-bold mb-2" x-text="$store.app.appName"></h1>
+  <p class="text-gray-600 mb-4">State global tetap tersimpan meskipun Anda berpindah halaman.</p>
+  
+  <button @click="$store.app.increment()" 
+          class="bg-sky-600 text-white px-4 py-2 rounded hover:bg-sky-700">
+    Global Counter: <span x-text="$store.app.counter"></span>
+  </button>
+</div>

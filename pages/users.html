@@ -1,0 +1,16 @@
+<div class="bg-white p-6 rounded-lg shadow-sm" 
+     x-data="{ users: [], isFetching: true }" 
+     x-init="fetch('https://typicode.com').then(r => r.json()).then(d => { users = d; isFetching = false })">
+  <h1 class="text-2xl font-bold mb-4">Daftar Pengguna (Fetch API)</h1>
+  
+  <p x-show="isFetching" class="text-gray-500">Mengambil data...</p>
+  
+  <ul x-show="!isFetching" class="divide-y">
+    <template x-for="user in users" :key="user.id">
+      <li class="py-3">
+        <p class="font-semibold" x-text="user.name"></p>
+        <p class="text-sm text-gray-500" x-text="user.email"></p>
+      </li>
+    </template>
+  </ul>
+</div>
