@@ -40,17 +40,24 @@ function router() {
         title: '404 Halaman Tidak Ditemukan — AlpineSPA'
       };
 
-      // Update judul tab browser
       document.title = route.title;
 
       try {
         const res = await fetch(route.file);
-        this.content = res.ok ? await res.text() : '<h1>404 - Halaman tidak ditemukan</h1>';
+        const html = await res.text();
+
+        // Cegah loop jika server fallback mengembalikan index.html
+        if (!res.ok || html.includes('<!DOCTYPE html>')) {
+          this.content = '<div class="card"><h1>404</h1><p class="subtitle">File template halaman tidak ditemukan di ' + route.file + '</p></div>';
+        } else {
+          this.content = html;
+        }
       } catch (err) {
-        this.content = '<p class="text-red-500">Gagal memuat halaman.</p>';
+        this.content = '<p>Gagal memuat halaman.</p>';
       } finally {
         this.loading = false;
       }
     }
+
   };
 }

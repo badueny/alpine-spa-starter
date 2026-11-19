@@ -1,0 +1,6 @@
+{
+  "cleanUrls": false,
+  "rewrites": [
+    { "source": "!/{pages,assets}/**", "destination": "/index.html" }
+  ]
+}
