@@ -16,6 +16,8 @@ Starter kit **Single Page Application (SPA)** ringan, modern, dan 100% *offline-
 ```text
 alpine-spa-starter/
 ├── index.html              # Kerangka utama (Navbar & container konten dinamis)
+├── package.json            # Konfigurasi dependensi Node.js (Express)
+├── server.js               # Server & SPA fallback menggunakan Express.js
 ├── serve.json              # Konfigurasi SPA routing untuk npx serve
 ├── server.php              # Router fallback untuk PHP built-in server
 ├── assets/
@@ -34,7 +36,15 @@ alpine-spa-starter/
 
 Karena aplikasi menggunakan `fetch()` dan HTML5 History API, jalankan proyek melalui server lokal dari dalam folder `alpine-spa-starter`:
 
-### Opsi 1: Menggunakan Node.js (`npx serve`)
+### Opsi 1: Menggunakan Express.js (`node server.js`)
+Pastikan dependensi sudah terpasang dan file `server.js` tersedia di root folder proyek:
+```bash
+npm install
+node server.js
+```
+Buka `http://localhost:3000` (atau sesuai port yang dikonfigurasi di `server.js`) di browser.
+
+### Opsi 2: Menggunakan Node.js (`npx serve`)
 Pastikan file `serve.json` tersedia di root folder proyek:
 ```json
 {
@@ -50,7 +60,7 @@ npx serve
 ```
 Buka `http://localhost:3000` di browser.
 
-### Opsi 2: Menggunakan PHP Built-in Server
+### Opsi 3: Menggunakan PHP Built-in Server
 Pastikan file `server.php` tersedia di root folder proyek:
 ```php
 <?php

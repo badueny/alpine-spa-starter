@@ -1,0 +1,25 @@
+{
+  "name": "alpine-spa-starter",
+  "version": "1.0.0",
+  "description": "Starter kit **Single Page Application (SPA)** ringan, modern, dan 100% *offline-ready* tanpa *build step* (zero-bundler) yang dibangun menggunakan **Alpine.js v3**, **HTML5 History API**, dan **CSS lokal modern**.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/badueny/alpine-spa-starter.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/badueny/alpine-spa-starter/issues"
+  },
+  "homepage": "https://github.com/badueny/alpine-spa-starter#readme",
+  "dependencies": {
+    "express": "^5.3.0"
+  }
+}
