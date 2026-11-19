@@ -1,5 +1,4 @@
 document.addEventListener('alpine:init', () => {
-  // Global State (bisa diakses di halaman mana saja via $store.app)
   Alpine.store('app', {
     appName: 'Alpine SPA Starter',
     counter: 0,
@@ -13,15 +12,14 @@ function router() {
     content: '',
     loading: false,
 
-    // Daftar rute ke file template HTML
+    // Tambahkan properti title pada setiap rute
     routes: {
-      '/': '/pages/home.html',
-      '/users': '/pages/users.html'
+      '/': { file: '/pages/home.html', title: 'Beranda — AlpineSPA' },
+      '/users': { file: '/pages/users.html', title: 'Daftar Pengguna — AlpineSPA' }
     },
 
     init() {
       this.loadPage(this.currentPath);
-      // Tangani tombol Back/Forward browser
       window.addEventListener('popstate', () => {
         this.currentPath = window.location.pathname;
         this.loadPage(this.currentPath);
@@ -37,9 +35,16 @@ function router() {
 
     async loadPage(path) {
       this.loading = true;
-      const file = this.routes[path] || '/pages/404.html';
+      const route = this.routes[path] || {
+        file: '/pages/404.html',
+        title: '404 Halaman Tidak Ditemukan — AlpineSPA'
+      };
+
+      // Update judul tab browser
+      document.title = route.title;
+
       try {
-        const res = await fetch(file);
+        const res = await fetch(route.file);
         this.content = res.ok ? await res.text() : '<h1>404 - Halaman tidak ditemukan</h1>';
       } catch (err) {
         this.content = '<p class="text-red-500">Gagal memuat halaman.</p>';
