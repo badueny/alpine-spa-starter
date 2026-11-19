@@ -1,9 +1,16 @@
-<div class="bg-white p-6 rounded-lg shadow-sm">
-  <h1 class="text-2xl font-bold mb-2" x-text="$store.app.appName"></h1>
-  <p class="text-gray-600 mb-4">State global tetap tersimpan meskipun Anda berpindah halaman.</p>
-  
-  <button @click="$store.app.increment()" 
-          class="bg-sky-600 text-white px-4 py-2 rounded hover:bg-sky-700">
-    Global Counter: <span x-text="$store.app.counter"></span>
-  </button>
+<div class="card">
+  <span class="badge">SPA Ready • Offline CSS</span>
+  <h1 x-text="$store.app.appName"></h1>
+  <p class="subtitle">
+    Navigasi instan tanpa reload halaman dengan global state reaktif bawaan Alpine.js.
+  </p>
+
+  <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+    <button @click="$store.app.increment()" class="btn">
+      Klik Counter: <span x-text="$store.app.counter"></span>
+    </button>
+    <button @click="$store.app.counter = 0" class="btn btn-outline">
+      Reset
+    </button>
+  </div>
 </div>

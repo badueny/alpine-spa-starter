@@ -1,16 +1,24 @@
-<div class="bg-white p-6 rounded-lg shadow-sm" 
+<div class="card" 
      x-data="{ users: [], isFetching: true }" 
-     x-init="fetch('https://typicode.com').then(r => r.json()).then(d => { users = d; isFetching = false })">
-  <h1 class="text-2xl font-bold mb-4">Daftar Pengguna (Fetch API)</h1>
-  
-  <p x-show="isFetching" class="text-gray-500">Mengambil data...</p>
-  
-  <ul x-show="!isFetching" class="divide-y">
+     x-init="fetch('https://jsonplaceholder.typicode.com/users').then(r => r.json()).then(d => { users = d; isFetching = false })">
+  <span class="badge">REST API Integration</span>
+  <h1>Daftar Pengguna</h1>
+  <p class="subtitle">Contoh pengambilan data asinkron menggunakan Fetch API dan x-for.</p>
+
+  <div x-show="isFetching" class="loader-box">
+    <div class="spinner"></div>
+    <span>Mengambil data dari server...</span>
+  </div>
+
+  <div x-show="!isFetching" class="user-grid">
     <template x-for="user in users" :key="user.id">
-      <li class="py-3">
-        <p class="font-semibold" x-text="user.name"></p>
-        <p class="text-sm text-gray-500" x-text="user.email"></p>
-      </li>
+      <div class="user-item">
+        <div class="avatar" x-text="user.name.charAt(0)"></div>
+        <div>
+          <div class="user-name" x-text="user.name"></div>
+          <div class="user-email" x-text="user.email"></div>
+        </div>
+      </div>
     </template>
-  </ul>
+  </div>
 </div>
